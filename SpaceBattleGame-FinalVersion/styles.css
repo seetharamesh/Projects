@@ -1,0 +1,84 @@
+#learn-spacebattle {
+    position: absolute;
+    z-index: -1; /*setting the z-index lower the z-index of modal will place modal infront*/
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ body {
+	background-image: url("SB.jpg");
+	background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ #modal {
+	background-color: rgba(0,0,0,0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+  /*This puts our modal in front of the body (which has a default z-index setting of `0`*/
+  display: none;
+/*Set this to `none` so that the modal does not show initially on page load.*/
+
+
+}
+ #modal-textbox {
+	background-color: white;
+	height: 380px;
+	width: 550px;
+	border-radius: 2px;
+	margin: 150px auto;
+  background-image: url("about-img.jpg");
+  border-radius: 5px;
+  opacity: 0.8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*This will set the margins for the top and the bottom to 150px (or larger). The right and left will automatically set themselves (and keep the box centered horizontally).*/
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+	/*This will give the box some depth.*/
+  /*Added this for close button -- Give #modal-textbox some room to breath with some padding and a change in line height:*/
+  padding: 2%;
+  line-height: 120%;
+/*Update the font of the #modal-textbox to 'Arial'.*/
+  font-family: 'Langar', cursive;
+}
+/*Adjust the close button location. Select just the footer and let's move the close button to the right: text-align: right;*/
+#modal-footer {
+	text-align: right;
+}
+
+#modal-textbox h1, p {
+  color: #ffffff;
+  justify-content: center;
+  font-family: 'Langar', cursive;
+}
+
+/*Give the heading some room to breath. We can reference the <h1> tag because it is the only one in the html at this time.*/
+h1 {
+	padding-bottom: 15px;
+}
+
+.modal-buttons, .start-button {
+	padding: 14px 18px;
+	background-color: #677996;
+	border: none;
+	outline: none;
+	border-radius: 3px;
+	color: white;
+  font-family: 'Langar', cursive;
+	cursor: pointer;
+}
+/* Below CSS will position START button to the lower right hand corner*/
+.start-button{
+  position:absolute;
+  bottom:0;
+  right:0;
+}
+
+
+/*  End */
