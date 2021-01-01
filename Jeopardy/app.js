@@ -2,9 +2,10 @@ console.log($);
 $(() => {
   var tileValue = 0;
   console.log("document loaded");
+//class Team is declared with
   class Team {
-    constructor(name, $el) {
-      this.name = name;
+    constructor($el) {
+    //  this.name = name;
       this.score = 0;
       //let us assign the element $el to each team instance
       this.$el = $el;
@@ -19,18 +20,8 @@ $(() => {
       this.$el.children().eq(1).text(this.score); //changed from 0 to 1
     }
 
-    // setup() {
-    //   this.$el.children().eq(1).on('click', () => {
-    //     console.log("increase score clicked");
-    //     this.increaseScore(100)
-    //   })
-    //   this.$el.children().eq(2).on('click', () => {
-    //     this.decreaseScore(100)
-    //   })
-    //   return this;
-    // }
   } //end of class
-  //var tileValue = 0;
+  //When tile is clicked do the below
   const $tiles = $('.tile').on('click', (event) => {
     $(event.currentTarget).toggleClass('active');
     // The below 2 statements returns the tile value and extracts just the numbers without $" sign.
@@ -38,21 +29,21 @@ $(() => {
     //console.log(tileValue);
     tileValue = /\d+/g.exec(tileValue)[0]; //extracts only numbers from $tilevalue
   //  console.log("Value of tile after extraction:" + tileValue);
-
-   $("#popup-overlay, #popup-content").addClass("active");
-
-//removes the "active" class to .popup and .popup-content when the "Close" button is clicked
-$(".close, #popup-overlay").on("click", function() {
-  $("#popup-overlay, #popup-content").removeClass("active");
 });
 
+//when Answer button is clicked alert with the answer
+$(".Answer-button").click(function() {
+  console.log("alert");
+      alert($(this).val());
 });
-
 
   //instantiate 3 teams
-  const team1 = new Team('team1', $('.container1'));
-  const team2 = new Team('team2', $('.container2'));
-  const team3 = new Team('team3', $('.container3'));
+  // const team1 = new Team('team1', $('.container1'));
+  // const team2 = new Team('team2', $('.container2'));
+  // const team3 = new Team('team3', $('.container3'));
+  const team1 = new Team($('.container1'));
+  const team2 = new Team($('.container2'));
+  const team3 = new Team($('.container3'));
 
   //Team 1 increment scoreboard
   $('.increment1').click(function() {
