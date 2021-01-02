@@ -1,8 +1,9 @@
 console.log($);
 $(() => {
   var tileValue = 0;
+  var idCounter = 1;
   console.log("document loaded");
-//class Team is declared with
+//class Team is declared
   class Team {
     constructor($el) {
     //  this.name = name;
@@ -21,22 +22,26 @@ $(() => {
     }
 
   } //end of class
+  //var getHideElem = document.getElementById('tile1').innerHTML;
+
   //When tile is clicked do the below
   const $tiles = $('.tile').on('click', (event) => {
+    //Toggle between adding and removing a class name from an element with JavaScript.
     $(event.currentTarget).toggleClass('active');
-    // The below 2 statements returns the tile value and extracts just the numbers without $" sign.
+    // The below 2 statements returns the tile value and extracts just the numbers without $" sign. The below statements are needed for score calculation
     tileValue = event.currentTarget.children[0].innerHTML;//children[0] is div-question value. children[1] is div question-answer
     //console.log(tileValue);
     tileValue = /\d+/g.exec(tileValue)[0]; //extracts only numbers from $tilevalue
   //  console.log("Value of tile after extraction:" + tileValue);
+  $(event.currentTarget.children[0]).hide();
+  //$(event.currentTarget.children).attr("disabled","disabled").off('click');
 });
 
 //when Answer button is clicked alert with the answer
-$(".Answer-button").click(function() {
+$(".Answer-button").click(function(event) {
   console.log("alert");
       alert($(this).val());
 });
-
   //instantiate 3 teams
   // const team1 = new Team('team1', $('.container1'));
   // const team2 = new Team('team2', $('.container2'));
@@ -73,4 +78,27 @@ $(".Answer-button").click(function() {
   $('.decrement3').click(function() {
     team3.decreaseScore(Number(tileValue));
   });
+
+  //end the game--- Will implement more functionality later.
+  // $('#endGame').click(function()){
+  //   if (confirm('Are you sure you want to end the game ?')) {
+  //   //alert('Thanks for confirming');
+  //   //project winner and reset the board
+  //   if(team1.score > team2.score && team1.score > team3.score){
+  //   alert("Winner of the game is: Team1");
+  //   else if(team2.score > team1.score && team2.score > team3.score){
+  //   alert("Winner of the game is: Team2");
+  //   else if(team3.score > team1.score && team3.score > team2.score){
+  //   alert("Winner of the game is: Team3");
+  //   else  alert("All three teams Win!!");
+  //
+  //   //reset the board
+  //
+  //
+  //   }
+    // else {
+    // alert('Why did you press cancel? You should have confirmed');
+    // }
+  // });
+
 }) //document end
