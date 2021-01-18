@@ -1,9 +1,21 @@
+
 class App extends React.Component {
     state = {
         baseURL: 'https://restcountries.eu/rest/v2/name/',
         country:[],
         searchURL:'',
-        countryName:''
+        countryName:'',
+        modal:false
+    }
+
+    modalOpen() {
+    console.log("inside open modal");
+    this.setState({ modal: true });
+    }
+
+    modalClose() {
+    console.log("inside close modal");
+    this.setState({modal: false});
     }
 
     handleChange = (event) => {
@@ -62,6 +74,8 @@ class App extends React.Component {
       console.log(cname);
         return (
             <div>
+            <button className="aboutButton" onClick={e => this.modalOpen(e)}>About the App!</button>
+
             <h1>Know Before You Go!!</h1>
             <form onSubmit={this.handleSubmit}>
                     <label htmlFor='country'>Country Name </label>
@@ -81,7 +95,8 @@ class App extends React.Component {
                         onClick={() => this.reset()}
                     />
                 </form>
-                 <CountryInfo cname={cname} capital={capital} reg={region} subreg={subreg} lang={lang} curr={currency} flag={flag} />
+                 <CountryInfo cname={cname} capital={capital} reg={region} subreg={subreg} lang={lang} curr={currency} />
+                 <DisplayFlag flag={flag} />
             </div>
         )
     }
@@ -93,17 +108,29 @@ class CountryInfo extends React.Component {
         return (
             <div className="cnc">
                 <h3><span style={styles}>Country: </span>{this.props.cname}</h3>
-                <h3><span style={styles}>Region: </span>{this.props.reg}</h3>
                 <h3><span style={styles}>Capital: </span>{this.props.capital}</h3>
+                <h3><span style={styles}>Region: </span>{this.props.reg}</h3>
                 <h3><span style={styles}>Subregion: </span>{this.props.subreg}</h3>
                 <h3><span style={styles}>Language: </span>{this.props.lang}</h3>
                 <h3><span style={styles}>Currency: </span>{this.props.curr}</h3>
-                {(this.props.flag != "") ? <img src={this.props.flag} alt="new" width="180" height="100"/> : null }
             </div>
         )
     }
 }
+
+class DisplayFlag extends React.Component {
+  render(){
+    return(
+      <div className="flagdisplay">
+      {(this.props.flag != "") ? <img src={this.props.flag} alt="new" width="200" height="100"/> : null }
+      </div>
+    )
+  }
+}
+
 ReactDOM.render(
     <App />,
     document.querySelector('.container')
 )
+
+// {(this.props.flag != "") ? <img src={this.props.flag} alt="new" width="200" height="100"/> : null }
