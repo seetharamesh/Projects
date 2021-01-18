@@ -8,15 +8,6 @@ class App extends React.Component {
         modal:false
     }
 
-    modalOpen() {
-    console.log("inside open modal");
-    this.setState({ modal: true });
-    }
-
-    modalClose() {
-    console.log("inside close modal");
-    this.setState({modal: false});
-    }
 
     handleChange = (event) => {
         this.setState({ [event.target.id]: event.target.value })
