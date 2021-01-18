@@ -13,11 +13,6 @@ class App extends React.Component {
         this.setState({ [event.target.id]: event.target.value })
     }
 
-    handleErrors(response) {
-      if (!response.ok) throw new Error(response.error);
-      return response;
-    }
-
   handleSubmit = (event) => {
       event.preventDefault()
       this.setState({
