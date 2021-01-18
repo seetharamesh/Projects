@@ -5,7 +5,6 @@ class App extends React.Component {
         country:[],
         searchURL:'',
         countryName:'',
-        modal:false
     }
 
 
