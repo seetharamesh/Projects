@@ -1,3 +1,5 @@
+//This App is developed to displayed any country details for the country name the user provides
+//Purpose: to know about the country before we go!!
 
 class App extends React.Component {
     state = {
@@ -6,12 +8,11 @@ class App extends React.Component {
         searchURL:'',
         countryName:'',
     }
-
-
+//this method sets the state for the input field that user enters. countryname: this.state.countryname
     handleChange = (event) => {
         this.setState({ [event.target.id]: event.target.value })
     }
-
+//this method is executed when form is submitted. It retrieves data and check for API errors
   handleSubmit = (event) => {
       event.preventDefault()
       this.setState({
@@ -38,14 +39,14 @@ class App extends React.Component {
                 })//end of state
     }//end of handlesubmit
 
+//resets the form and API data displayed
   reset(){
   console.log("reset");
   this.setState({countryName: '',
                  country:[]
                  });
   }
-
-
+    //renders the form and gets the data from API and pass them as props to child component
     render() {
       const cname = (this.state.country.map(cname => (cname.name)));
       const capital = (this.state.country.map(capital => (capital.capital)));
@@ -59,8 +60,6 @@ class App extends React.Component {
       console.log(cname);
         return (
             <div>
-            <button className="aboutButton" onClick={e => this.modalOpen(e)}>About the App!</button>
-
             <h1>Know Before You Go!!</h1>
             <form onSubmit={this.handleSubmit}>
                     <label htmlFor='country'>Country Name </label>
@@ -80,12 +79,12 @@ class App extends React.Component {
                         onClick={() => this.reset()}
                     />
                 </form>
-                 <CountryInfo cname={cname} capital={capital} reg={region} subreg={subreg} lang={lang} curr={currency} />
-                 <DisplayFlag flag={flag} />
+                 <CountryInfo cname={cname} capital={capital} reg={region} subreg={subreg} lang={lang} curr={currency} flag={flag} />
             </div>
         )
     }
 }
+//child component that renders API data
 class CountryInfo extends React.Component {
     render() {
       const styles = {color:'rgb(179, 20, 20)'}
@@ -98,24 +97,13 @@ class CountryInfo extends React.Component {
                 <h3><span style={styles}>Subregion: </span>{this.props.subreg}</h3>
                 <h3><span style={styles}>Language: </span>{this.props.lang}</h3>
                 <h3><span style={styles}>Currency: </span>{this.props.curr}</h3>
+                {(this.props.flag != "") ? <img src={this.props.flag} alt="new" width="200" height="100"/> : null }
             </div>
         )
     }
 }
-
-class DisplayFlag extends React.Component {
-  render(){
-    return(
-      <div className="flagdisplay">
-      {(this.props.flag != "") ? <img src={this.props.flag} alt="new" width="200" height="100"/> : null }
-      </div>
-    )
-  }
-}
-
+//the App is rendered int the reactDOM
 ReactDOM.render(
     <App />,
     document.querySelector('.container')
 )
-
-// {(this.props.flag != "") ? <img src={this.props.flag} alt="new" width="200" height="100"/> : null }
