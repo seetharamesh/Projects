@@ -1,5 +1,8 @@
 //This App is developed to displayed any country details for the country name the user provides
+//Get information about countries via a RESTful API
 //Purpose: to know about the country before we go!!
+//https://restcountries.eu/
+//I am using the "Full Name" search
 
 class App extends React.Component {
     state = {
