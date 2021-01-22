@@ -1,3 +1,11 @@
+Purpose: To know information about any country around the world 
+Users: All ages 
+Technology used: create-react-app 
+Background about the App: Get information about countries via a RESTful API. This API gets information about countries such as name, capital, region, sub-region, currency, flag, language. I am fetching data from this API and displaying it on the page. The parent component has the form for userinput and modal component. It gets the country name from the user and on a click of the submit button the information retrieved is passed as prop to the child component and the data is displayed. The modal component is activated via About App button to show or hide information about the app!
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
